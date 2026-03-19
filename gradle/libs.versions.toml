@@ -1,0 +1,27 @@
+[versions]
+alchemist = "43.0.10"
+collektive = "28.0.1"
+kotlin = "2.3.10"
+kotlin-logging = "7.0.7"
+
+[libraries]
+alchemist = { module = "it.unibo.alchemist:alchemist", version.ref = "alchemist" }
+alchemist-incarnation-protelis = { module = "it.unibo.alchemist:alchemist-incarnation-protelis", version.ref = "alchemist" }
+alchemist-swingui = { module = "it.unibo.alchemist:alchemist-swingui", version.ref = "alchemist" }
+alchemist-ui-tooling = {module = "it.unibo.alchemist:alchemist-ui-tooling", version.ref = "alchemist" }
+alchemist-euclidean-geometry = { module = "it.unibo.alchemist:alchemist-euclidean-geometry", version.ref = "alchemist" }
+collektive = { module = "it.unibo.collektive:collektive-dsl", version.ref = "collektive" }
+collektive-incarnation = { module = "it.unibo.collektive:alchemist-incarnation-collektive", version.ref = "collektive" }
+collektive-stdlib = { module = "it.unibo.collektive:collektive-stdlib", version.ref = "collektive" }
+
+[bundles]
+alchemist = ["alchemist", "alchemist-euclidean-geometry", "alchemist-incarnation-protelis", "alchemist-swingui", "alchemist-ui-tooling"]
+collektive = ["collektive", "collektive-incarnation", "collektive-stdlib"]
+
+[plugins]
+multiJvmTesting = "org.danilopianini.multi-jvm-test-plugin:4.3.2"
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-qa = "org.danilopianini.gradle-kotlin-qa:1.1.0"
+taskTree = "com.dorongold.task-tree:4.0.1"
+collektive = { id = "it.unibo.collektive.collektive-plugin", version.ref = "collektive" }
