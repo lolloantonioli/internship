@@ -2,7 +2,7 @@ incarnation: collektive
 
 network-model:
   type: ConnectWithinDistance
-  parameters: [10]
+  parameters: [3.0]
 
 _pool: &program
   - time-distribution: 1
@@ -13,6 +13,10 @@ _pool: &program
 
 deployments:
   - type: Grid
-    parameters: [ 0, 0, 60, 60, 3, 3, 1, 1 ]
+    parameters: [ 0, 0, 80, 80, 2, 2, 0.5, 0.5 ]
     programs:
       - *program
+    contents:
+      - molecule: leader
+        concentration: false
+

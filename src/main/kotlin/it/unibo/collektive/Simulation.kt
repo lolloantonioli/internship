@@ -20,7 +20,7 @@ fun Aggregate<Int>.entrypoint(env: EnvironmentVariables, collektiveDevice: Colle
     val distances = with(collektiveDevice) { distances() }
 
     // Elezione leader
-    val isLeader = (boundedElection(bound = 20) == localId).also { env["leader"] = it }
+    val isLeader = (boundedElection(bound = 20.0, metric = distances) == localId).also { env["leader"] = it }
 
     // Formazione regioni
     val closestLeader = electRegion(isLeader, distances)
@@ -30,14 +30,8 @@ fun Aggregate<Int>.entrypoint(env: EnvironmentVariables, collektiveDevice: Colle
         countDevices(sink = isLeader)
     }
 
-    // leader propaga il conteggio
-    val regionalDecision = broadcastDecision(isLeader, regionalCount, distances)
-
-    return regionalDecision
+    return regionalCount
 }
 
 fun Aggregate<Int>.electRegion(isLeader: Boolean, distances: Field<Int, Double>): Int =
     gradientCast(source = isLeader, local = localId, metric = distances)
-
-fun Aggregate<Int>.broadcastDecision(isLeader: Boolean, value: Int, distances: Field<Int, Double>): Int =
-    gradientCast(source = isLeader, local = value, metric = distances)
