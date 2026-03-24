@@ -9,13 +9,10 @@ _pool: &program
     type: Event
     actions:
       - type: RunCollektiveProgram
-        parameters: [it.unibo.collektive.SimulationKt.entrypoint]
+        parameters: [it.unibo.collektive.CityKt.cityEntrypoint]
 
 deployments:
   - type: Grid
-    parameters: [ 0, 0, 80, 80, 2, 2, 0.5, 0.5 ]
+    parameters: [ 0, 0, 120, 120, 3, 3, 0.5, 0.5 ]
     programs:
       - *program
-    contents:
-      - molecule: leader
-        concentration: false
