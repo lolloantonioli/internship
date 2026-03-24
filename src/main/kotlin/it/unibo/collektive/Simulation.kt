@@ -3,18 +3,10 @@ package it.unibo.collektive
 import it.unibo.alchemist.collektive.device.CollektiveDevice
 import it.unibo.collektive.aggregate.Field
 import it.unibo.collektive.aggregate.api.Aggregate
-import it.unibo.collektive.aggregate.api.neighborhood
-import it.unibo.collektive.aggregate.api.neighboring
-import it.unibo.collektive.aggregate.api.share
-import it.unibo.collektive.aggregate.values
 import it.unibo.collektive.alchemist.device.sensors.EnvironmentVariables
 import it.unibo.collektive.stdlib.accumulation.countDevices
-import it.unibo.collektive.stdlib.collapse.fold
-import it.unibo.collektive.stdlib.collapse.maxBy
 import it.unibo.collektive.stdlib.consensus.boundedElection
-import it.unibo.collektive.stdlib.spreading.distanceTo
 import it.unibo.collektive.stdlib.spreading.gradientCast
-import it.unibo.collektive.stdlib.iterables.FieldedCollectionsExtensions.max
 
 fun Aggregate<Int>.entrypoint(env: EnvironmentVariables, collektiveDevice: CollektiveDevice<*>): Int {
     val distances = with(collektiveDevice) { distances() }
